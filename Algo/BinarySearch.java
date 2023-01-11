@@ -134,6 +134,70 @@ public class BinarySearch {
 
     }
 
+    public void printLevelOrder(Node node){
+        if(node == null){
+            return;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        while(!queue.isEmpty()){
+            Node current = queue.poll();
+            System.out.print(current.data+" ");
+
+            if(current.right != null){
+                queue.add(current.right);
+            }
+            if(current.left != null){
+                queue.add(current.left);
+            }
+
+        }
+
+    }
+
+    public int maxTreeValue(Node node){
+        if(node == null){
+            return 0;
+        }
+
+        int max = node.data;
+        int maxLeft = maxTreeValue(node.left);
+        int maxRight = maxTreeValue(node.right);
+
+        int newMax = (maxLeft > maxRight) ? maxLeft : maxRight;
+        int maxValue = (newMax > max) ? newMax : max;
+
+        return maxValue;
+
+    }
+
+    public Node insertNode(Node root, int value){
+        if(root == null){
+            return new Node(value);
+        }
+
+        int nodeData = root.data;
+        if(nodeData > value) root.left = insertNode(root, value);
+        if(nodeData < value) root.right = insertNode(root, value);
+
+        return root;
+
+    }
+
+    public Node searchNode(Node root, int value){
+        if(root == null){
+            return root;
+        }
+
+        int nodeData = root.data;
+        if(nodeData == value) return root;
+        if(nodeData > value) return insertNode(root, value);
+        if(nodeData < value) return insertNode(root, value);
+
+        return root;
+
+    }
+
 }
 
 
