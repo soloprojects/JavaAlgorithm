@@ -198,6 +198,63 @@ public class BinarySearch {
 
     }
 
+    public boolean validateSearchBinaryTree(Node root, long min, long max){
+        if(root == null){
+            return true;
+        }
+
+        int nodeData = root.data;
+        if(nodeData <= min || nodeData >= max){
+            return false;
+        }
+        boolean left = validateSearchBinaryTree(root.left, min, root.data);
+        if(left){
+           boolean right = validateSearchBinaryTree(root.right, root.data, max);
+           return right;
+        }else{
+            return false;
+        }
+
+    }
+
+    public boolean iterativeSymmertricBinaryTree(Node root){
+        if(root == null){
+            return true;
+        }
+
+        Stack<Node> stack = new Stack<>();
+        stack.push(root.right);
+        stack.push(root.left);
+
+        while(!stack.isEmpty()){
+
+            Node left = stack.pop();
+            Node right = stack.pop();
+            if(left != null && right == null) return false;
+            if(left == null && right != null) return false;
+            if(left != right) return false;
+
+            stack.push(left.left);
+            stack.push(right.right);
+            stack.push(left.right);
+            stack.push(right.left);
+
+        }
+
+        return true;
+
+    }
+
+    public boolean recursiveSymmertricBinaryTree(Node left, Node right){
+        if(left != null && right == null) return false;
+        if(left == null && right != null) return false;
+        if(left != right) return false;
+        boolean outer = recursiveSymmertricBinaryTree(left.left, right.right);
+        boolean inner = recursiveSymmertricBinaryTree(left.right, right.left);
+        return outer && inner;
+
+    }
+
 }
 
 

@@ -43,7 +43,7 @@ public class General {
 
         ArrayList<Integer> list = new ArrayList<>();
 
-        if(index == (arr.length -1)){
+        if(index == arr.length){
             return list;
         }
 
@@ -55,6 +55,24 @@ public class General {
 
         list.addAll(find);
         return list;
+
+    }
+
+    public Integer countMultiple(int [] arr, int target, int index){
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        if(index == arr.length){
+            return list.size();
+        }
+
+        if(arr[index] == target){
+            list.add(target);
+        }
+
+        Integer find = list.size() + countMultiple(arr, target, index + 1);
+
+        return find;
 
     }
 
