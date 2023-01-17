@@ -29,6 +29,30 @@ public class BinarySearch {
         return -1;
     }
 
+    public static int iterativeBinarySearch(int[] arr, int target){
+        int start = 0;
+        int end = arr.length - 1;
+
+        while(start <= end){
+            int mid =  start + (end - start)/2;
+            int pivot = arr[mid];
+
+            if(pivot == target) return target;
+
+            if(target > pivot){
+                start = mid + 1;
+            }
+            if(target < pivot){
+                end = mid - 1;
+            }
+
+
+        }
+
+        return -1;
+
+    }
+
     public void preOrderRecursive(Node node){
         if(node == null){
             return;
