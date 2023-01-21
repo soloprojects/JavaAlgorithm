@@ -10,11 +10,12 @@ public class BinarySearch {
 
         BinarySearch search = new BinarySearch();
         int [] arr = {-1,0,1,2,2,4,7,9,19,20};
-//        int val = search.binarySearch(arr, 0, 9, 4);
+//        int val = search.infinityArraySearch(arr, 1);
 //        System.out.println(val);
 
+        int [] arr2 = {-1,0,1,2,5,4,3,2,1,0};
         General gen = new General();
-        System.out.println(gen.findMultiple(arr,2, 0));
+        System.out.println(gen.mountainPeak(arr2));
 
     }
 
@@ -26,6 +27,17 @@ public class BinarySearch {
 
         if(arr[split] > numb) return binarySearch(arr, start, split-1, numb);
         if(arr[split] < numb) return binarySearch(arr, split+1,end, numb);
+        return -1;
+    }
+
+    public int binarySearchIndex(int[] arr, int start, int end, int numb){
+
+        if(start > end) return -1;
+        int split = (start+end)/2;
+        if(arr[split] == numb ) return split;
+
+        if(arr[split] > numb) return binarySearchIndex(arr, start, split-1, numb);
+        if(arr[split] < numb) return binarySearchIndex(arr, split+1,end, numb);
         return -1;
     }
 
@@ -50,6 +62,24 @@ public class BinarySearch {
         }
 
         return -1;
+
+    }
+
+    public int infinityArraySearch(int[] arr, int target){
+        int start = 0;
+        int end = 1;
+
+        while(target > arr[end]){
+
+            int initialStart = end + 1;
+
+            end = end + (end - start + 1) * 2;
+            start = initialStart;
+
+        }
+
+        BinarySearch search = new BinarySearch();
+        return search.binarySearchIndex(arr, start, end, target);
 
     }
 
