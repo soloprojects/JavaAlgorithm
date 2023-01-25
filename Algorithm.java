@@ -17,13 +17,19 @@ public class Algorithm {
 
         int [] arr2 = {4,7,3,9,5,2,1};
         int [] arr3 = {3,4,5,6,7,0,1,2};
+        int [] arr4 = {1,2,3,4,5};
+        int [][] arr5 = {{1,2,3,4},
+                        {5,6,7,8},
+                        {9,10,11,12},
+                        {13,14,15,16}};
+
         Sorting sort = new Sorting();
         //sort.bubble(arr2, 0, 0);
         //sort.recursiveQuickSort(arr2, 0, arr2.length - 1);
         //System.out.print(Arrays.toString(arr2));
         General general = new General();
         //System.out.println(general.rotatedArrPeak(arr3));
-        System.out.println(general.rotatedArr(arr3, 5));
+        System.out.println(Arrays.toString(general.binarySearchMatrixSorted(arr5, 16)));
        //System.out.println(general.floorBinarySearch(arr,-1));
 
 

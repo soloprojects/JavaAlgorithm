@@ -221,5 +221,114 @@ public class General {
 
     }
 
+    public int splitArrayLargestSum(int[] arr){
+
+        int start = 0;
+        int end = 1;
+        int tempF = 0;
+        int tempS = 0;
+        int ans = 0;
+        int max = 0;
+
+        while(end < arr.length){
+            //int tempStart = start;
+            while(start < end){
+                tempF+= arr[start];
+                start ++;
+            }
+
+            while(start < arr.length){
+                tempS+= arr[start];
+                start ++;
+            }
+
+            max = (tempF > tempS) ? tempF : tempS;
+
+            if(ans > 0){
+                ans = (max < ans) ? max : ans;
+            }else{
+                ans = max;
+            }
+            start = 0;
+            end += 1;
+            tempF = 0;
+            tempS = 0;
+
+        }
+        return ans;
+
+    }
+
+    public int[] binarySearchMatrixSorted(int[][] matrix, int target){
+
+
+
+        int rowS = 0, rowE = matrix.length - 1;
+        int colS = 0, colE = matrix[0].length - 1;
+        int colM = (colS + colE)/2;
+        if(matrix.length == 1) return binarySearchMatrix(matrix, 0, 0, colE, target);
+        while(rowS < (rowE - 1)){
+            int rowM = rowS + (rowE - rowS)/2;
+
+            if(matrix[rowM][colM] == target){
+                return new int [] {rowM, colM};
+            }
+
+            if (target < matrix[rowM][colM]) {
+                rowE = rowM;
+            }else{
+                rowS = rowM;
+            }
+
+        }
+        System.out.println(rowS+"end="+rowE);
+
+        if(matrix[rowS][colM] == target){
+            return new int[] {rowS, colM};
+        }
+
+        if(matrix[rowE][colM] == target){
+            return new int[] {rowE, colM};
+        }
+
+
+        if(target < matrix[rowS][colM]){
+            return binarySearchMatrix(matrix, rowS, 0, colM - 1, target);
+        }
+
+        if(target > matrix[rowS][colM] && target <= matrix[rowS][colE]) {
+            return binarySearchMatrix(matrix, rowS, colM+1, colE, target);
+        }
+
+
+        if(target < matrix[rowE][colM]){
+            return binarySearchMatrix(matrix, rowE, 0, colM - 1, target);
+        }else{
+            return binarySearchMatrix(matrix, rowE, colM+1, colE, target);
+        }
+
+    }
+
+    public static int[] binarySearchMatrix(int[][] matrix, int row, int colS, int colE, int target){
+
+        while(colS <= colE){
+            int mid =  colS + (colE - colS)/2;
+            int pivot = matrix[row][mid];
+
+            if(pivot == target) return new int[] {row, mid};
+
+            if(target > pivot){
+                colS = mid + 1;
+            }else{
+                colE = mid - 1;
+            }
+
+
+        }
+
+        return new int[] {-1, -1};
+
+    }
+
 
 }
