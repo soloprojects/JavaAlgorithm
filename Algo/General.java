@@ -281,7 +281,6 @@ public class General {
             }
 
         }
-        System.out.println(rowS+"end="+rowE);
 
         if(matrix[rowS][colM] == target){
             return new int[] {rowS, colM};
