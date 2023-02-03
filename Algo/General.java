@@ -329,5 +329,43 @@ public class General {
 
     }
 
+    public void gun(int numb, int start){ //start 0, numb = 4
+
+        if(numb == 0) return;
+
+        if(start < numb){
+            start++;
+            System.out.print(start+" ");
+            step(numb,start);
+
+
+        }else{
+
+            System.out.println("");
+            step(numb - 1, 0);
+        }
+
+
+    }
+
+    public void step(int numb, int start){ //start = 0, numb = 1
+
+        if(numb > 4) return;
+
+        if(start < numb){
+            start++;
+            System.out.print(start+" ");
+            step(numb,start);
+
+
+        }else{
+
+            System.out.println("");
+            step(numb + 1, 0);
+        }
+
+
+    }
+
 
 }

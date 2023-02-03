@@ -1,5 +1,8 @@
 package Algo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Sorting {
 
     public void recursiveSelection(int[] arr, int index, int count){
@@ -98,5 +101,70 @@ public class Sorting {
         recursiveQuickSort(arr, s, high);
 
     }
+
+    public void cycleSort(int[] arr){
+        int i = 0;
+        while (i < arr.length){
+            int correct = arr[i] - 1;
+            if(arr[i] != arr[correct]){
+                int temp = arr[i];
+                int temp2 = arr[correct];
+                arr[correct] = temp;
+                arr[i] = temp2;
+            }else{
+                i++;
+            }
+
+        }
+
+    }
+
+    public int cycleSortDuplicateNumber(int[] arr){
+        int i = 0;
+        while (i < arr.length){
+            int correct = arr[i] - 1;
+            int temp = arr[i];
+            int temp2 = arr[correct];
+            if(temp == temp2) return temp;
+            if(arr[i] != arr[correct]){
+                arr[correct] = temp;
+                arr[i] = temp2;
+            }else{
+                i++;
+            }
+
+        }
+        return 0;
+
+    }
+
+    public ArrayList<Integer> cycleSortDuplicateNumberArr(int[] arr){
+        int i = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (i < arr.length){
+            int correct = arr[i] - 1;
+            int temp = arr[i];
+            int temp2 = arr[correct];
+            if(temp == temp2 && (arr[i] - 1) != i){
+                boolean check = list.contains(temp);
+                if(!check) {
+                    list.add(temp);
+                }
+                i++;
+
+            }else
+            if(arr[i] != arr[correct]){
+                arr[correct] = temp;
+                arr[i] = temp2;
+            }else{
+                i++;
+            }
+
+        }
+        System.out.println(Arrays.toString(arr));
+        return list;
+
+    }
+
 
 }

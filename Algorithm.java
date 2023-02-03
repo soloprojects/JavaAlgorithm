@@ -22,6 +22,11 @@ public class Algorithm {
                         {5,6,7,8},
                         {9,10,11,12},
                         {13,14,15,16}};
+        int [] arr6 = {4,6,3,7,5,2,1};
+        int [] arr7 = {4,6,3,0,5,2,1};
+        int [] arr8 = {4,6,3,3,5,2,1};
+        int [] arr9 = {4,6,3,3,5,2,1,1};
+        int [] arr10 = {1,2,3,4};
 
         Sorting sort = new Sorting();
         //sort.bubble(arr2, 0, 0);
@@ -29,8 +34,22 @@ public class Algorithm {
         //System.out.print(Arrays.toString(arr2));
         General general = new General();
         //System.out.println(general.rotatedArrPeak(arr3));
-        System.out.println(Arrays.toString(general.binarySearchMatrixSorted(arr5, 16)));
+        //System.out.println(Arrays.toString(general.binarySearchMatrixSorted(arr5, 16)));
        //System.out.println(general.floorBinarySearch(arr,-1));
+        //sort.cycleSort(arr6);
+
+        //System.out.println(sort.cycleSortDuplicateNumberArr(arr9));
+        //general.step(0,1);
+
+        SubSetSequence sub = new SubSetSequence();
+        //System.out.println(sub.subSequence("","abc"));
+        //System.out.println(sub.subSequenceAscii("","abc"));
+        //System.out.println(sub.subSequenceArr(arr10));
+
+        Permutation perm = new Permutation();
+        System.out.println(perm.diceRoll("", 4));
+
+
 
 
     }
