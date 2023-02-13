@@ -46,8 +46,15 @@ public class Algorithm {
         //System.out.println(sub.subSequenceAscii("","abc"));
         //System.out.println(sub.subSequenceArr(arr10));
 
-        Permutation perm = new Permutation();
-        System.out.println(perm.diceRoll("", 4));
+        //Permutation perm = new Permutation();
+        //System.out.println(perm.diceRoll("", 4));
+
+        boolean [][] arr11 = {{true,true,true},
+                            {true,true,true},
+                            {true,true,true}};
+
+        Maze maze = new Maze();
+        System.out.println(maze.mazeAllPath(arr11,"",0,0));
 
 
 
