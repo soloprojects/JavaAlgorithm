@@ -367,5 +367,49 @@ public class General {
 
     }
 
+    public int largestRectangleArea(int[] heightArr){
+
+        Stack<Integer> stack = new Stack<Integer>();
+        int max = 0;
+        stack.push(max);
+        int back, front;
+
+        for(int i = 0; i < heightArr.length; i++){
+            int height = heightArr[i];
+            int count = 1;
+            front = i + 1;
+            back = i - 1;
+            boolean frontTemp = true;
+            boolean backTemp = true;
+            while(backTemp && frontTemp){
+                System.out.println(back+"front = "+ front);
+                if(back >= 0 && heightArr[back] >= heightArr[i] && backTemp){
+                    count++;
+
+                }else{
+                    backTemp = false;
+                }
+                back --;
+                if(front < heightArr.length && heightArr[front] >= heightArr[i] && frontTemp){
+                    count++;
+
+                }else{
+                    backTemp = false;
+                }
+                front++;
+
+            }
+            int currentMax = stack.pop();
+            int area = height * count;
+            int newMax = Math.max(currentMax, area);
+            stack.push(newMax);
+
+        }
+
+        return stack.pop();
+
+
+    }
+
 
 }

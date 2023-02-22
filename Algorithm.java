@@ -52,9 +52,12 @@ public class Algorithm {
         boolean [][] arr11 = {{true,true,true},
                             {true,true,true},
                             {true,true,true}};
+        int [] arr12 = {2,1,5,6,2,3};
 
         Maze maze = new Maze();
-        System.out.println(maze.mazeAllPath(arr11,"",0,0));
+        //System.out.println(maze.mazeAllPath(arr11,"",0,0));
+
+        System.out.println(general.largestRectangleArea(arr12));
 
 
 
