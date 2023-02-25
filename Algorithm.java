@@ -53,11 +53,18 @@ public class Algorithm {
                             {true,true,true},
                             {true,true,true}};
         int [] arr12 = {2,1,5,6,2,3};
+        int [] value = {150,300,200};
+        int [] weight = {1,4,3};
+
 
         Maze maze = new Maze();
         //System.out.println(maze.mazeAllPath(arr11,"",0,0));
 
-        System.out.println(general.largestRectangleArea(arr12));
+        //System.out.println(general.largestRectangleArea(arr12));
+
+        DynamicProgramming dynamic = new DynamicProgramming();
+        //System.out.println(dynamic.houseRobber(arr12));
+        System.out.println(dynamic.knapSack(value, weight, 4));
 
 
 
