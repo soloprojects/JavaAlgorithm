@@ -411,5 +411,30 @@ public class General {
 
     }
 
+    public int maxContainerArea(int[] height) {
+
+        int max = 0;
+        int n = height.length;
+        int left = 0;
+        int right = n - 1;
+        int maxHeight, minHeight;
+
+        while(left < right){
+            int width = right - left;
+            maxHeight = Math.max(height[left], height[right]);
+            minHeight = Math.min(height[left], height[right]);
+            max = Math.max(max, minHeight * width);
+            if(height[right] > height[left]){
+                left++;
+            }else{
+                right--;
+            }
+
+        }
+
+        return max;
+
+    }
+
 
 }
